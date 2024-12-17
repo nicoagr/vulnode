@@ -1,0 +1,36 @@
+name: vulnode
+
+services:
+  vulnode-nginx:
+    image: nginx:latest
+    volumes:
+      - ./compose-files/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - vulnode-express
+    restart: unless-stopped
+    ports:
+      - "8888:80"
+    environment:
+      - NGINX_PORT=80
+    networks:
+      - public-gateway
+      - nginx-express
+
+  vulnode-express:
+    build:
+      context: .
+      dockerfile: Dockerfile-express
+      shm_size: '1gb'
+    environment:
+      - NODE_ENV=PRODUCTION
+    restart: unless-stopped
+    networks:
+      - nginx-express
+
+networks:
+  public-gateway:
+    driver: bridge
+    internal: false
+  nginx-express:
+    driver: bridge
+    internal: true

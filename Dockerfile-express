@@ -1,0 +1,13 @@
+FROM node:slim
+
+RUN useradd -r dockeruserrunner
+
+COPY --chown=dockeruserrunner:dockeruserrunner ./ /app
+RUN chmod -R 777 /app
+RUN chown -R dockeruserrunner:dockeruserrunner /app
+
+WORKDIR /app
+
+RUN npm install --omit=dev --save
+USER dockeruserrunner
+CMD ["npm", "run", "start"]
