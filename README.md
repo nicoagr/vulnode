@@ -3,7 +3,7 @@ A showcase of two security considerations that need to be taken into account whe
 
 This project is part of the "Security in Information Systems" course in the fourth year of the "Computer Engineering" university degree.
 
-A technical report (in spanish) explaning the bad practices mentioned in this application can be found here.
+A technical report (in spanish) explaning the bad practices exposed in this application can be found [here](https://github.com/nicoagr/vulnode/blob/master/laboratorio.pdf).
 
 ## Disclaimer
 
@@ -28,4 +28,4 @@ docker-compose up -d
 
 ### Legal
 
-WTFPL (See the LICENSE file)
+WTFPL (See the [LICENSE file](https://github.com/nicoagr/vulnode/blob/master/LICENSE))
