@@ -10,7 +10,7 @@ let {xss} = require('express-xss-sanitizer');
 let ratelimit = require('express-rate-limit');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var evalRouter = require('./routes/eval');
 
 var app = express();
 
@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/eval', evalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
