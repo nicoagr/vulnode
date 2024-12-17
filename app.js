@@ -11,6 +11,7 @@ let ratelimit = require('express-rate-limit');
 
 var indexRouter = require('./routes/index');
 var evalRouter = require('./routes/eval');
+var cookieRouter = require('./routes/cookie');
 
 var app = express();
 
@@ -40,6 +41,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/eval', evalRouter);
+app.use('/cookie', cookieRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
