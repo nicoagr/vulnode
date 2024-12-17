@@ -12,9 +12,6 @@ services:
       - "8888:80"
     environment:
       - NGINX_PORT=80
-    networks:
-      - public-gateway
-      - nginx-express
 
   vulnode-express:
     build:
@@ -24,13 +21,3 @@ services:
     environment:
       - NODE_ENV=PRODUCTION
     restart: unless-stopped
-    networks:
-      - nginx-express
-
-networks:
-  public-gateway:
-    driver: bridge
-    internal: false
-  nginx-express:
-    driver: bridge
-    internal: true
